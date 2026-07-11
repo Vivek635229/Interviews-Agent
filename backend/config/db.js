@@ -12,15 +12,22 @@ const MAX_RETRIES = 5;
 /**
  * Connect to MongoDB with strictQuery and retry limits
  */
+let cachedConn = null;
+
 const connectDB = async () => {
   try {
+    if (cachedConn && mongoose.connection.readyState === 1) {
+      logger.info('Using cached MongoDB connection.');
+      return cachedConn;
+    }
+
     // Configure Mongoose strictQuery (recommended for modern Mongoose)
     mongoose.set('strictQuery', false);
 
     logger.info('Connecting to MongoDB Atlas...');
     
     // Attempt Mongoose connection
-    const conn = await mongoose.connect(env.MONGODB_URI, {
+    cachedConn = await mongoose.connect(env.MONGODB_URI, {
       maxPoolSize: 10,
       serverSelectionTimeoutMS: 5000,
       socketTimeoutMS: 45000,
@@ -28,8 +35,8 @@ const connectDB = async () => {
 
     // Success logs as required
     logger.info('✅ MongoDB Connected Successfully');
-    logger.info(`Host: ${conn.connection.host}`);
-    logger.info(`Database Name: ${conn.connection.name}`);
+    logger.info(`Host: ${cachedConn.connection.host}`);
+    logger.info(`Database Name: ${cachedConn.connection.name}`);
 
     // Connection event listeners for runtime connection monitoring
     mongoose.connection.on('error', (err) => {

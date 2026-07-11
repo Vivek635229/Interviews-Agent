@@ -69,7 +69,7 @@ const env = {
 
   // Upload
   MAX_FILE_SIZE: parseInt(process.env.MAX_FILE_SIZE, 10) || 5 * 1024 * 1024,
-  UPLOAD_PATH: process.env.UPLOAD_PATH || 'backend/uploads',
+  UPLOAD_PATH: process.env.VERCEL ? '/tmp/uploads' : (process.env.UPLOAD_PATH || 'backend/uploads'),
 
   // Helpers
   isDev: (process.env.NODE_ENV || 'development') === 'development',

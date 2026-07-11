@@ -79,7 +79,7 @@ if (env.isDev) {
 app.use('/api/', apiLimiter);
 
 // ── Ensure uploads directory exists ──
-const uploadsDir = path.join(__dirname, 'uploads');
+const uploadsDir = env.UPLOAD_PATH;
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
