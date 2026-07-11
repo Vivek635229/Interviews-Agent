@@ -12,8 +12,6 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const fs = require('fs');
-const mongoSanitize = require('express-mongo-sanitize');
-const xss = require('xss-clean');
 
 const corsOptions = require('./config/cors');
 const { connectDB, disconnectDB } = require('./config/db');
@@ -21,6 +19,37 @@ const { apiLimiter } = require('./middleware/rateLimiter.middleware');
 const { errorHandler, notFoundHandler } = require('./middleware/error.middleware');
 const { initializeRAG } = require('./rag/pipeline');
 const logger = require('./utils/logger');
+
+// ── Custom Sanitization (Express 5 compatible) ──
+// express-mongo-sanitize and xss-clean are incompatible with Express 5
+// (req.query is read-only in Express 5)
+const sanitizeValue = (value) => {
+  if (typeof value === 'string') {
+    // Strip basic XSS patterns
+    return value
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/\$/g, '')
+      .replace(/\.\./g, '');
+  }
+  if (value && typeof value === 'object') {
+    for (const key of Object.keys(value)) {
+      // Remove keys starting with $ (NoSQL injection)
+      if (key.startsWith('$')) {
+        delete value[key];
+      } else {
+        value[key] = sanitizeValue(value[key]);
+      }
+    }
+  }
+  return value;
+};
+
+const sanitizeMiddleware = (req, res, next) => {
+  if (req.body) sanitizeValue(req.body);
+  if (req.params) sanitizeValue(req.params);
+  next();
+};
 
 // ── Initialize Express ──
 const app = express();
@@ -36,11 +65,8 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(cookieParser());
 
-// Data Sanitization against NoSQL query injection
-app.use(mongoSanitize());
-
-// Data Sanitization against XSS
-app.use(xss());
+// Data Sanitization (NoSQL injection + XSS) — Express 5 compatible
+app.use(sanitizeMiddleware);
 
 // ── Logging ──
 if (env.isDev) {
