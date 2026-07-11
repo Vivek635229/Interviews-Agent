@@ -118,7 +118,7 @@ const RegisterForm = () => {
               checked={agreed}
               onChange={(e) => setAgreed(e.target.checked)}
             />
-            <span>I agree to the <a href="#" className="text-ink font-medium hover:underline">Terms of Service</a> and <a href="#" className="text-ink font-medium hover:underline">Privacy Policy</a></span>
+            <span>I agree to the <button type="button" className="text-ink font-medium hover:underline bg-transparent border-none cursor-pointer p-0">Terms of Service</button> and <button type="button" className="text-ink font-medium hover:underline bg-transparent border-none cursor-pointer p-0">Privacy Policy</button></span>
           </label>
 
           <Button fullWidth size="lg" type="submit" disabled={loading}>

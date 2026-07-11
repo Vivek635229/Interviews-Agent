@@ -13,7 +13,6 @@ const ResumeUploadContent = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
-  const [uploaded, setUploaded] = useState(false);
   const [uploadResult, setUploadResult] = useState(null);
   const [analyzing, setAnalyzing] = useState(false);
   const [error, setError] = useState('');
@@ -60,7 +59,6 @@ const ResumeUploadContent = () => {
       // Upload to backend
       const response = await resumeService.uploadResume(f);
       setUploadResult(response.data.resume);
-      setUploaded(true);
 
       // Auto-analyze
       setAnalyzing(true);
@@ -191,7 +189,7 @@ const ResumeUploadContent = () => {
               </div>
 
               <div className="flex items-center justify-center gap-3">
-                <Button onClick={() => { setFile(null); setUploaded(false); setUploadResult(null); setError(''); }} variant="secondary" icon="bi-arrow-repeat">
+                <Button onClick={() => { setFile(null); setUploadResult(null); setError(''); }} variant="secondary" icon="bi-arrow-repeat">
                   Upload Another
                 </Button>
                 <Button icon="bi-bar-chart-line" onClick={() => navigate('/resume/analysis')}>
