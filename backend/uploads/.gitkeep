@@ -1,0 +1,4 @@
+# Uploads Directory
+This directory stores uploaded resume PDFs.
+Files are named with unique timestamps and random hashes.
+Do not commit uploaded files to version control.

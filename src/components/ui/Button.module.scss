@@ -1,0 +1,159 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  border-radius: $rounded-full;
+  font-family: $font-body;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+  @include transition;
+
+  &:focus-visible {
+    outline: 2px solid $color-focus-ring;
+    outline-offset: 2px;
+  }
+}
+
+.primary {
+  composes: button;
+  background-color: $color-primary;
+  color: $color-on-primary;
+  padding: 8px 20px;
+  height: 36px;
+
+  &:hover {
+    background-color: $color-ink-deep;
+  }
+
+  &:active {
+    background-color: $color-ink-deep;
+    transform: scale(0.98);
+  }
+}
+
+.secondary {
+  composes: button;
+  background-color: $color-canvas;
+  color: $color-ink;
+  padding: 8px 20px;
+  height: 36px;
+  border: 1px solid $color-hairline-strong;
+
+  &:hover {
+    background-color: $color-surface-soft;
+  }
+
+  &:active {
+    background-color: $color-surface-soft;
+    transform: scale(0.98);
+  }
+}
+
+.ghost {
+  composes: button;
+  background-color: transparent;
+  color: $color-ink;
+  padding: 8px 20px;
+  height: 36px;
+
+  &:hover {
+    background-color: $color-surface-soft;
+  }
+}
+
+.onDark {
+  composes: button;
+  background-color: $color-canvas;
+  color: $color-ink;
+  padding: 8px 20px;
+  height: 36px;
+
+  &:hover {
+    background-color: $color-surface-soft;
+  }
+}
+
+.danger {
+  composes: button;
+  background-color: $color-danger;
+  color: $color-on-primary;
+  padding: 8px 20px;
+  height: 36px;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.disabled {
+  background-color: $color-surface-soft;
+  color: $color-mute;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+// Sizes
+.sm {
+  font-size: 12px;
+  padding: 6px 14px;
+  height: 28px;
+}
+
+.lg {
+  font-size: 16px;
+  padding: 10px 28px;
+  height: 44px;
+}
+
+.icon {
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: $rounded-full;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: $color-ink;
+  @include transition;
+
+  &:hover {
+    background-color: $color-surface-soft;
+  }
+
+  &.sm {
+    width: 28px;
+    height: 28px;
+  }
+
+  &.lg {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: $rounded-full;
+    animation: spin 0.6s linear infinite;
+  }
+}

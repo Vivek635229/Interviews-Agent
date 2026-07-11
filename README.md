@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# InterviewAI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+InterviewAI is a full-stack MERN (MongoDB, Express, React, Node.js) application designed to help candidates prepare for technical and behavioral interviews. It leverages AI to analyze your resume, generate personalized interview questions, and provide actionable feedback.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Authentication**: Secure JWT-based user registration and login.
+- **Resume Analysis**: Upload your PDF resume to receive an ATS compatibility score, skill extraction, and improvement suggestions.
+- **AI-Powered Mock Interviews**: Practice with dynamically generated interview questions tailored to your profile and target role, powered by IBM Granite AI.
+- **Dashboard & Analytics**: Track your performance over time, view category scores, and monitor your interview history.
+- **Responsive & Themed UI**: A modern, fully responsive user interface with built-in light and dark mode support.
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Frontend
+- **React.js**: UI library.
+- **React Router**: Client-side routing.
+- **Tailwind CSS & SCSS**: Styling and layout.
+- **Framer Motion**: Animations and transitions.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Backend
+- **Node.js & Express**: Server framework.
+- **MongoDB & Mongoose**: Database and object modeling.
+- **JSON Web Tokens (JWT)**: Authentication.
+- **IBM Granite AI**: Core intelligence for question generation and analysis.
+- **pdf-parse**: For extracting text from uploaded resume PDFs.
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
+Make sure you have [Node.js](https://nodejs.org/) and [MongoDB](https://www.mongodb.com/) installed on your system. You will also need API credentials for IBM Granite AI.
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the repository** (if applicable):
+   ```bash
+   git clone <repository-url>
+   cd resume-ai
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Install Frontend Dependencies**:
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Install Backend Dependencies**:
+   Navigate to the backend directory and install its dependencies.
+   ```bash
+   cd backend
+   npm install
+   ```
 
-### `npm run eject`
+4. **Environment Variables**:
+   Create a `.env` file in the `backend` directory and add the necessary configurations:
+   ```env
+   PORT=5000
+   MONGO_URI=<your-mongodb-connection-string>
+   JWT_SECRET=<your-jwt-secret>
+   # Add any required API keys for IBM Granite AI
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+5. **Start the Application**:
+   You can run both the frontend and backend servers.
+   - For the frontend (from the root directory):
+     ```bash
+     npm start
+     ```
+   - For the backend (from the `backend` directory or via custom script):
+     ```bash
+     npm run server
+     ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+This project is for educational and portfolio purposes.

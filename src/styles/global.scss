@@ -1,0 +1,169 @@
+// ═══════════════════════════════════════════════════════════════
+// Global Styles — Reset + Base
+// ═══════════════════════════════════════════════════════════════
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'variables';
+@import 'typography';
+@import 'animations';
+
+:root {
+  --color-canvas: #ffffff;
+  --color-ink: #000000;
+  --color-ink-deep: #090909;
+  --color-charcoal: #525252;
+  --color-body: #737373;
+  --color-mute: #a3a3a3;
+  --color-surface-soft: #fafafa;
+  --color-surface-card: #ffffff;
+  --color-hairline: #e5e5e5;
+  --color-hairline-strong: #d4d4d4;
+  --color-primary: #000000;
+  --color-on-primary: #ffffff;
+}
+
+html.dark {
+  --color-canvas: #0f172a;
+  --color-ink: #f1f5f9;
+  --color-ink-deep: #f8fafc;
+  --color-charcoal: #cbd5e1;
+  --color-body: #94a3b8;
+  --color-mute: #64748b;
+  --color-surface-soft: #1e293b;
+  --color-surface-card: #1e293b;
+  --color-hairline: #334155;
+  --color-hairline-strong: #475569;
+  --color-primary: #f1f5f9;
+  --color-on-primary: #0f172a;
+}
+
+// Body scroll lock for mobile menus
+body.menu-open {
+  overflow: hidden;
+}
+
+// ── Reset ──
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: $font-body;
+  font-size: 16px;
+  line-height: 1.5;
+  color: $color-ink;
+  background-color: $color-canvas;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+input, textarea, select {
+  font: inherit;
+  color: inherit;
+  outline: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+// ── Scrollbar ──
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $color-hairline-strong;
+  border-radius: $rounded-full;
+
+  &:hover {
+    background: $color-mute;
+  }
+}
+
+// ── Selection ──
+::selection {
+  background: rgba(0, 0, 0, 0.08);
+  color: $color-ink;
+}
+
+// ── Focus Ring ──
+:focus-visible {
+  outline: 2px solid $color-focus-ring;
+  outline-offset: 2px;
+}
+
+// ── Utility Classes ──
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: $max-width-dashboard;
+  margin: 0 auto;
+  padding: 0 $spacing-xl;
+
+  @include respond-to('mobile') {
+    padding: 0 $spacing-lg;
+  }
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: $max-width-content;
+  margin: 0 auto;
+  padding: 0 $spacing-xl;
+}
+
+.section {
+  @include section-spacing;
+}

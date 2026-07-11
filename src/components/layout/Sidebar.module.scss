@@ -1,0 +1,158 @@
+@import '../../styles/variables';
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: $sidebar-width;
+  background-color: $color-canvas;
+  border-right: 1px solid $color-hairline;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transform: translate3d(0, 0, 0);
+  transition: transform $transition-base $ease-smooth,
+              background-color $transition-base $ease-smooth;
+
+  @include respond-to('tablet-narrow') {
+    transform: translate3d(-100%, 0, 0);
+    box-shadow: none;
+
+    &.open {
+      transform: translate3d(0, 0, 0);
+      box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
+    }
+  }
+}
+
+.header {
+  height: $nav-height;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 $spacing-lg;
+  border-bottom: 1px solid $color-hairline;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  text-decoration: none;
+
+  .logo {
+    width: 28px;
+    height: 28px;
+    background-color: $color-primary;
+    border-radius: $rounded-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-on-primary;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .brandName {
+    font-family: $font-display;
+    font-size: 16px;
+    font-weight: 600;
+    color: $color-ink;
+  }
+}
+
+.nav {
+  flex: 1;
+  padding: $spacing-md;
+  overflow-y: auto;
+}
+
+.navGroup {
+  margin-bottom: $spacing-xl;
+
+  .groupLabel {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $color-mute;
+    padding: 0 $spacing-md;
+    margin-bottom: $spacing-sm;
+  }
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $rounded-md;
+  font-size: 14px;
+  font-weight: 400;
+  color: $color-body;
+  text-decoration: none;
+  @include transition;
+
+  &:hover {
+    background-color: $color-surface-soft;
+    color: $color-ink;
+  }
+
+  &.active {
+    background-color: $color-surface-soft;
+    color: $color-ink;
+    font-weight: 500;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+
+  i {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+  }
+}
+
+.footer {
+  padding: $spacing-lg;
+  border-top: 1px solid $color-hairline;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-sm;
+  border-radius: $rounded-md;
+  @include transition;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $color-surface-soft;
+  }
+
+  .userName {
+    font-size: 14px;
+    font-weight: 500;
+    color: $color-ink;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .userEmail {
+    font-size: 12px;
+    color: $color-mute;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 99;
+}

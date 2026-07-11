@@ -1,0 +1,112 @@
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  background-color: $color-canvas;
+  border: 1px solid $color-hairline;
+  border-radius: $rounded-full;
+  font-family: $font-body;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: $color-ink;
+  padding: 8px 16px;
+  height: 40px;
+  @include transition;
+
+  &::placeholder {
+    color: $color-mute;
+  }
+
+  &:focus {
+    border-color: $color-ink;
+    box-shadow: 0 0 0 2px $color-focus-ring;
+  }
+}
+
+.textarea {
+  composes: input;
+  border-radius: $rounded-lg;
+  height: auto;
+  min-height: 100px;
+  resize: vertical;
+}
+
+.search {
+  composes: input;
+  background-color: $color-surface-soft;
+  border: none;
+  font-size: 14px;
+  height: 36px;
+  padding-left: 36px;
+
+  &:focus {
+    background-color: $color-canvas;
+    box-shadow: 0 0 0 2px $color-focus-ring;
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  color: $color-mute;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.iconLeft {
+  padding-left: 40px;
+}
+
+.iconRight {
+  padding-right: 40px;
+}
+
+.leftIcon, .rightIcon {
+  position: absolute;
+  color: $color-mute;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.leftIcon {
+  left: 14px;
+}
+
+.rightIcon {
+  right: 14px;
+}
+
+.label {
+  display: block;
+  font-family: $font-body;
+  font-size: 14px;
+  font-weight: 500;
+  color: $color-ink;
+  margin-bottom: $spacing-xs;
+}
+
+.helperText {
+  font-size: 12px;
+  color: $color-body;
+  margin-top: $spacing-xs;
+}
+
+.error {
+  .input {
+    border-color: $color-danger;
+  }
+  .helperText {
+    color: $color-danger;
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

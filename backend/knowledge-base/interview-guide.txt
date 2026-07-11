@@ -1,0 +1,107 @@
+Interview Preparation Guide — Knowledge Base Document
+=====================================================
+
+STAR Method for Behavioral Interviews
+--------------------------------------
+The STAR method is a structured approach to answering behavioral interview questions:
+
+S — Situation: Describe the context and background. Set the scene with relevant details.
+T — Task: Explain what you were responsible for. What was your role?
+A — Action: Detail the specific steps you took. Focus on YOUR contributions.
+R — Result: Share the outcome. Use metrics and data when possible.
+
+Common Behavioral Questions:
+- Tell me about a time you faced a challenging deadline
+- Describe a situation where you had to work with a difficult team member
+- Give an example of when you showed leadership
+- Tell me about a time you failed and what you learned
+- Describe a situation where you had to make a difficult decision
+
+Technical Interview Best Practices
+-----------------------------------
+1. Think out loud — Interviewers want to see your thought process
+2. Ask clarifying questions before diving into a solution
+3. Start with a brute force approach, then optimize
+4. Consider edge cases and error handling
+5. Discuss time and space complexity
+6. Write clean, readable code with meaningful variable names
+7. Test your solution with examples
+
+Common Technical Topics:
+- Data Structures: Arrays, Linked Lists, Trees, Graphs, Hash Maps
+- Algorithms: Sorting, Searching, Dynamic Programming, Recursion
+- System Design: Scalability, Load Balancing, Caching, Database Sharding
+- Web Technologies: REST APIs, GraphQL, Authentication, WebSockets
+- DevOps: CI/CD, Containers, Cloud Services, Monitoring
+
+System Design Interview Framework
+-----------------------------------
+1. Requirements Clarification (5 min)
+   - Functional requirements
+   - Non-functional requirements (scale, latency, availability)
+   - Constraints and assumptions
+
+2. High-Level Design (10 min)
+   - API design
+   - Data model
+   - Component architecture diagram
+
+3. Detailed Design (15 min)
+   - Deep dive into critical components
+   - Database schema
+   - Caching strategy
+   - Message queues and async processing
+
+4. Scaling and Trade-offs (10 min)
+   - Horizontal vs vertical scaling
+   - Database sharding
+   - CDN and edge computing
+   - Monitoring and alerting
+
+Resume Best Practices
+---------------------
+- Use action verbs: Developed, Implemented, Led, Optimized, Reduced, Increased
+- Quantify achievements: "Reduced load time by 40%", "Led team of 5 engineers"
+- Keep it to 1-2 pages
+- Use consistent formatting
+- Include relevant keywords for ATS systems
+- Highlight projects with measurable impact
+- Include both technical and soft skills
+- Tailor your resume to each application
+
+Communication Skills in Interviews
+------------------------------------
+- Listen actively — don't interrupt
+- Structure your answers clearly
+- Use the "headline first" approach — state your main point, then elaborate
+- Ask thoughtful questions at the end
+- Show enthusiasm for the role and company
+- Be honest about what you don't know
+- Follow up with a thank-you email
+
+Common HR Interview Questions
+-------------------------------
+- Why are you interested in this role?
+- What are your greatest strengths and weaknesses?
+- Where do you see yourself in 5 years?
+- Why are you leaving your current position?
+- What is your expected salary range?
+- Describe your ideal work environment
+- How do you handle stress and pressure?
+
+Salary Negotiation Tips
+------------------------
+1. Research market rates using Glassdoor, Levels.fyi, and Payscale
+2. Consider the total compensation package (base, bonus, equity, benefits)
+3. Never give the first number — let the company make an offer
+4. Express enthusiasm but ask for time to consider
+5. Counter with data and rationale
+6. Be prepared to walk away if the offer doesn't meet your minimum
+
+Post-Interview Follow-Up
+-------------------------
+- Send a thank-you email within 24 hours
+- Reference specific conversation points
+- Reiterate your interest and qualifications
+- Keep it brief and professional
+- Follow up again after one week if you haven't heard back
