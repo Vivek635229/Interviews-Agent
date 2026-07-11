@@ -80,8 +80,12 @@ app.use('/api/', apiLimiter);
 
 // ── Ensure uploads directory exists ──
 const uploadsDir = env.UPLOAD_PATH;
-if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir, { recursive: true });
+try {
+  if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+  }
+} catch (err) {
+  logger.warn(`Could not create uploads directory: ${err.message}`);
 }
 
 // ── Health Check ──
@@ -180,6 +184,10 @@ const startServer = async () => {
   }
 };
 
-startServer();
+// Only start the server when run directly (e.g. `node backend/server.js`)
+// When imported by Vercel serverless (api/index.js), skip app.listen()
+if (require.main === module) {
+  startServer();
+}
 
 module.exports = app;

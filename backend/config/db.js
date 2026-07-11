@@ -54,7 +54,7 @@ const connectDB = async () => {
     // Reset retry counter on successful connection
     connectionRetries = 0;
 
-    return conn;
+    return cachedConn;
   } catch (error) {
     connectionRetries += 1;
     logger.error(`❌ MongoDB connection failed (Attempt ${connectionRetries}/${MAX_RETRIES}): ${error.message}`);
