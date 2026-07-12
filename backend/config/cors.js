@@ -10,9 +10,12 @@ const corsOptions = {
     if (!origin) return callback(null, true);
 
     const allowedOrigins = [
-      'http://localhost:3000',
       'https://interviews-agent-application.vercel.app'
     ];
+
+    if (env.isDev) {
+      allowedOrigins.push('http://localhost:3000');
+    }
 
     // Add extra origins from env
     if (process.env.FRONTEND_URL) {
