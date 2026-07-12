@@ -134,12 +134,12 @@ const startServer = async () => {
     await initializeRAG();
 
     // 3. Start listening
-    const server = app.listen(env.PORT, () => {
+    const PORT = process.env.PORT || 5000;
+    const server = app.listen(PORT, "0.0.0.0", () => {
       logger.info('═══════════════════════════════════════════════');
-      logger.info(`🚀 Server running on port ${env.PORT}`);
-      logger.info(`📍 Environment: ${env.NODE_ENV}`);
-      logger.info(`🔗 API: http://localhost:${env.PORT}/api/v1`);
-      logger.info(`🤖 IBM watsonx.ai: ${env.hasIBM ? 'Configured' : 'Not configured (using mocks)'}`);
+      logger.info(`✓ Server Running on port ${PORT}`);
+      logger.info(`✓ Environment Loaded: ${env.NODE_ENV}`);
+      logger.info(`✓ IBM Connected: ${env.hasIBM ? 'Yes' : 'No'}`);
       logger.info('═══════════════════════════════════════════════');
     });
 

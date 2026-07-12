@@ -48,7 +48,7 @@ if (missingOptional.length > 0) {
 const env = {
   // Server
   NODE_ENV: process.env.NODE_ENV || 'development',
-  PORT: parseInt(process.env.BACKEND_PORT || process.env.PORT, 10) || 5000,
+  PORT: parseInt(process.env.PORT, 10) || 5000,
 
   // MongoDB
   MONGODB_URI: process.env.MONGODB_URI,

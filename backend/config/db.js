@@ -34,7 +34,7 @@ const connectDB = async () => {
     });
 
     // Success logs as required
-    logger.info('✅ MongoDB Connected Successfully');
+    logger.info('✓ MongoDB Connected');
     logger.info(`Host: ${cachedConn.connection.host}`);
     logger.info(`Database Name: ${cachedConn.connection.name}`);
 

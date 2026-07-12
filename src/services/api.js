@@ -4,8 +4,7 @@
 
 import axios from 'axios';
 
-const isProd = process.env.NODE_ENV === 'production';
-const API_BASE_URL = process.env.REACT_APP_API_URL || (isProd ? '/api/v1' : 'http://localhost:5000/api/v1');
+const API_BASE_URL = process.env.REACT_APP_API_URL || '/api/v1';
 
 const api = axios.create({
   baseURL: API_BASE_URL,

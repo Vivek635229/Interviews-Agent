@@ -10,23 +10,13 @@ const corsOptions = {
     if (!origin) return callback(null, true);
 
     const allowedOrigins = [
-      env.CLIENT_URL,
+      'http://localhost:3000',
+      'https://interviews-agent-application.vercel.app'
     ];
 
-    // Add extra origins from env (comma-separated)
-    if (process.env.ALLOWED_ORIGINS) {
-      process.env.ALLOWED_ORIGINS.split(',').forEach((o) => allowedOrigins.push(o.trim()));
-    }
-
-    // In development, also allow localhost ports
-    if (env.isDev) {
-      allowedOrigins.push(
-        'http://localhost:3000',
-        'http://localhost:3001',
-        'http://localhost:5000',
-        'http://localhost:5001',
-        'http://localhost:5002',
-      );
+    // Add extra origins from env
+    if (process.env.FRONTEND_URL) {
+      allowedOrigins.push(process.env.FRONTEND_URL);
     }
 
     if (allowedOrigins.includes(origin)) {
