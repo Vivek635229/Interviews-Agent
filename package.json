@@ -37,12 +37,11 @@
     "xss-clean": "^0.1.4"
   },
   "scripts": {
+    "client": "craco start",
+    "server": "npx nodemon backend/server.js",
+    "dev": "npx concurrently \"npm run server\" \"npm run client\"",
     "start": "node backend/server.js",
-    "dev": "npx nodemon backend/server.js",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject",
-    "client": "craco start"
+    "build": "craco build"
   },
   "eslintConfig": {
     "extends": [
