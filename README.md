@@ -142,12 +142,4 @@ Feel free to check the [issues page](<your-github-repo-url>/issues).
 This project is intended for educational and portfolio purposes.
 
 ---
-
-## 👤 Author
-
-**Your Name**
-* GitHub: [@yourusername](https://github.com/yourusername)
-* LinkedIn: [Your Profile](https://linkedin.com/in/yourusername)
-
----
 ⭐️ If you found this project helpful, please give it a star on GitHub! ⭐️
