@@ -4,7 +4,10 @@
 
 const User = require('../models/User.model');
 const Resume = require('../models/Resume.model');
-const Interview = require('../models/Interview.model');
+const InterviewSession = require('../models/InterviewSession.model');
+const InterviewQuestion = require('../models/InterviewQuestion.model');
+const InterviewAnswer = require('../models/InterviewAnswer.model');
+const InterviewReport = require('../models/InterviewReport.model');
 const AppError = require('../utils/AppError');
 const catchAsync = require('../utils/catchAsync');
 
@@ -91,8 +94,14 @@ const changePassword = catchAsync(async (req, res) => {
  */
 const deleteAccount = catchAsync(async (req, res) => {
   // Cascade delete associated data
+  const sessions = await InterviewSession.find({ userId: req.user._id }).select('_id');
+  const sessionIds = sessions.map(s => s._id);
+
+  await InterviewAnswer.deleteMany({ sessionId: { $in: sessionIds } });
+  await InterviewQuestion.deleteMany({ sessionId: { $in: sessionIds } });
+  await InterviewReport.deleteMany({ sessionId: { $in: sessionIds } });
+  await InterviewSession.deleteMany({ userId: req.user._id });
   await Resume.deleteMany({ userId: req.user._id });
-  await Interview.deleteMany({ userId: req.user._id });
 
   await User.findByIdAndDelete(req.user._id);
 

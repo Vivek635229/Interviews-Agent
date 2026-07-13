@@ -5,8 +5,13 @@
 const dotenv = require('dotenv');
 const path = require('path');
 
-// Load .env from backend root
-dotenv.config({ path: path.join(__dirname, '..', '.env') });
+// Load .env from backend root (only needed for local development)
+// On Vercel, env vars are injected via the dashboard
+const envPath = path.join(__dirname, '..', '.env');
+const fs = require('fs');
+if (fs.existsSync(envPath)) {
+  dotenv.config({ path: envPath });
+}
 
 const requiredVars = [
   'MONGODB_URI',
@@ -26,8 +31,11 @@ const optionalVars = [
 const missing = requiredVars.filter((key) => !process.env[key]);
 if (missing.length > 0 && process.env.NODE_ENV !== 'test') {
   console.error(`❌ Missing required environment variables: ${missing.join(', ')}`);
-  console.error('   Copy .env.example to .env and fill in the values.');
-  process.exit(1);
+  console.error('   Set them in Vercel dashboard or copy .env.example to .env locally.');
+  // Don't exit on Vercel — the function may still receive env vars
+  if (!process.env.VERCEL) {
+    process.exit(1);
+  }
 }
 
 // Warn about optional IBM vars
@@ -40,7 +48,7 @@ if (missingOptional.length > 0) {
 const env = {
   // Server
   NODE_ENV: process.env.NODE_ENV || 'development',
-  PORT: parseInt(process.env.BACKEND_PORT || process.env.PORT, 10) || 5000,
+  PORT: parseInt(process.env.PORT, 10) || 5000,
 
   // MongoDB
   MONGODB_URI: process.env.MONGODB_URI,
@@ -69,7 +77,7 @@ const env = {
 
   // Upload
   MAX_FILE_SIZE: parseInt(process.env.MAX_FILE_SIZE, 10) || 5 * 1024 * 1024,
-  UPLOAD_PATH: process.env.UPLOAD_PATH || 'backend/uploads',
+  UPLOAD_PATH: process.env.VERCEL ? '/tmp/uploads' : (process.env.UPLOAD_PATH || 'backend/uploads'),
 
   // Helpers
   isDev: (process.env.NODE_ENV || 'development') === 'development',

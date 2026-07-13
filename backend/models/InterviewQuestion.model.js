@@ -10,7 +10,6 @@ const interviewQuestionSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'InterviewSession',
       required: true,
-      index: true,
     },
     questionNumber: {
       type: Number,

@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
-import { fadeInUp } from '../../constants/designTokens';
 
 /**
  * ScrollReveal — wraps children with fade-in-up on scroll.
